@@ -7,7 +7,11 @@
     <title><?= $titre ?></title>
 </head>
 <body>
-   
+   <main>
+        <h1>PDO Cinéma</h1>
+        <h2><?= $titre_secondaire ?></h2>
+        <div><?= $contenu ?></div>
+   </main>
     
 </body>
 </html>

@@ -15,7 +15,7 @@ class CinemaController {
         SELECT titre, annee_sortie_film
         FROM film");
         //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
-        require "view/listFilms/php";
+        require "view/listFilms.php";
     }
 }
 
