@@ -1,32 +1,11 @@
--- --------------------------------------------------------
--- Hôte:                         127.0.0.1
--- Version du serveur:           8.0.30 - MySQL Community Server - GPL
--- SE du serveur:                Win64
--- HeidiSQL Version:             12.1.0.6537
--- --------------------------------------------------------
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
--- Listage de la structure de la base pour cinema_anthony
-CREATE DATABASE IF NOT EXISTS `cinema_anthony` /*!40100 DEFAULT CHARACTER SET cp1250 COLLATE cp1250_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `cinema_anthony`;
-
--- Listage de la structure de table cinema_anthony. acteur
 CREATE TABLE IF NOT EXISTS `acteur` (
   `id_acteur` int NOT NULL AUTO_INCREMENT,
   `id_personne` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_acteur`),
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `acteur__personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12;
 
 -- Listage des données de la table cinema_anthony.acteur : ~11 rows (environ)
 INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
@@ -53,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `casting` (
   CONSTRAINT `casting__acteur` FOREIGN KEY (`id_acteur`) REFERENCES `acteur` (`id_acteur`),
   CONSTRAINT `casting__film` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
   CONSTRAINT `casting__role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT    ;
 
 -- Listage des données de la table cinema_anthony.casting : ~32 rows (environ)
 INSERT INTO `casting` (`id_acteur`, `id_film`, `id_role`) VALUES
@@ -98,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `categoriser` (
   KEY `id_genre` (`id_genre`),
   CONSTRAINT `categoriser__film` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
   CONSTRAINT `categoriser__genre` FOREIGN KEY (`id_genre`) REFERENCES `genre` (`id_genre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT    ;
 
 -- Listage des données de la table cinema_anthony.categoriser : ~19 rows (environ)
 INSERT INTO `categoriser` (`id_film`, `id_genre`) VALUES
@@ -135,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `film` (
   PRIMARY KEY (`id_film`),
   KEY `id_realisateur` (`id_realisateur`),
   CONSTRAINT `FK_film_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT    ;
 
 -- Listage des données de la table cinema_anthony.film : ~14 rows (environ)
 INSERT INTO `film` (`id_film`, `titre`, `annee_sortie_film`, `synopsis`, `duree_minute`, `note`, `affiche`, `id_realisateur`) VALUES
@@ -159,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `genre` (
   `id_genre` int NOT NULL AUTO_INCREMENT,
   `nom_genre` varchar(20) NOT NULL,
   PRIMARY KEY (`id_genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT    ;
 
 -- Listage des données de la table cinema_anthony.genre : ~6 rows (environ)
 INSERT INTO `genre` (`id_genre`, `nom_genre`) VALUES
@@ -178,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `sexe` varchar(50) NOT NULL,
   `date_naissance` date NOT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT    ;
 
 -- Listage des données de la table cinema_anthony.personne : ~16 rows (environ)
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `date_naissance`) VALUES
@@ -206,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `realisateur` (
   PRIMARY KEY (`id_realisateur`),
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT;
 
 -- Listage des données de la table cinema_anthony.realisateur : ~6 rows (environ)
 INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
@@ -222,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `id_role` int NOT NULL AUTO_INCREMENT,
   `nom_role` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT    ;
 
 -- Listage des données de la table cinema_anthony.role : ~10 rows (environ)
 INSERT INTO `role` (`id_role`, `nom_role`) VALUES

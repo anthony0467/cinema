@@ -7,6 +7,25 @@
     <title><?= $titre ?></title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.php?action=listFilms">Voir les films disponibles</a>
+                </li>
+
+                <li>
+                <a href="">Voir la liste des acteurs</a>
+                </li>
+
+                <li>
+                <a href="index.php?action=listReals">Voir la liste des réalisateurs</a>
+                </li>
+            </ul>
+        </nav>
+
+
+    </header>
    <main>
         <h1>PDO Cinéma</h1>
         <h2><?= $titre_secondaire ?></h2>
