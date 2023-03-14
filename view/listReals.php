@@ -5,16 +5,14 @@
 <table class="uk-table uk-table-striped">
     <thead>
         <tr>
-            <th>PRENOM</th>
-            <th>NOM</th>
+            <th>REALISATEUR</th>
         </tr>
     </thead>
     <tbody>
         <?php
         foreach($requete->fetchAll() as $real){ ?>
             <tr>
-                <td><?= $real["prenom"] ?></td>
-                <td><?= $real["nom"] ?></td>
+                <td><a href=""><?= $real["realisateur"] ?></a></td>
             </tr>
        <?php } ?>
     </tbody>

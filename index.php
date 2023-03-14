@@ -5,7 +5,10 @@ session_start();
 
 use Controller\CinemaController;
 use Controller\RealController;
+use Controller\ActeurController;
 use Controller\HomeController;
+use Controller\GenreController;
+use Controller\RoleController;
 
 //On autocharge les classes du projet 
 spl_autoload_register(function($class_name){
@@ -15,13 +18,23 @@ spl_autoload_register(function($class_name){
 $ctrlCinema = new CinemaController();
 $ctrlHome = new HomeController();
 $ctrReal = new RealController();
+$ctrActeur = new ActeurController();
+$ctrGenre = new GenreController();
+$ctrRole = new RoleController();
+
+
+$id = (isset($_GET["id"])) ? $_GET["id"] : null ;
 
 if(isset($_GET["action"])){
     switch ($_GET["action"]) {
 
         case "listFilms" : $ctrlCinema->listFilms(); break;
-        //case "listActeurs" : $ctrlCinema->listActeurs(); break;
+        case "detailFilm" : $ctrlCinema->detailFilm(); break;
+        case "listActeurs" : $ctrActeur->listActeurs(); break;
+        case "detailActeur" : $ctrActeur->detailActeur($id); break;
         case "listReals" : $ctrReal->listReals(); break;
+        case "listGenres" : $ctrGenre->listGenres(); break;
+        case "listRoles" : $ctrRole->listRoles(); break;
     }
 }
 

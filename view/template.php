@@ -15,11 +15,19 @@
                 </li>
 
                 <li>
-                <a href="">Voir la liste des acteurs</a>
+                <a href="index.php?action=listActeurs">Voir la liste des acteurs</a>
                 </li>
 
                 <li>
                 <a href="index.php?action=listReals">Voir la liste des réalisateurs</a>
+                </li>
+
+                <li>
+                <a href="index.php?action=listGenres">Liste des genres</a>
+                </li>
+
+                <li>
+                <a href="index.php?action=listRoles">Liste des roles</a>
                 </li>
             </ul>
         </nav>
