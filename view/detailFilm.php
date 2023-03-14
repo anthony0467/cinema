@@ -1,6 +1,6 @@
 <?php ob_start();
 $filmDetail = $requeteDetailFilm->fetch();
-
+$filmReal = $requeteReal->fetch();
  ?>
             
             <article>
@@ -9,6 +9,10 @@ $filmDetail = $requeteDetailFilm->fetch();
                 <p>Durée du film : <?= $filmDetail['duree_minute'] ?> minutes</p>
                 <p>Note : <?= $filmDetail['note'] ?> </p>
                 <h4>Casting :</h4>
+                <h4>Réalisateur :</h4>
+                <p><a href="index.php?action=detailReal&id=<?= $filmReal['id_realisateur'] ?>"
+                 ><?= $filmReal['prenom'], ' ', $filmReal['nom'] ?></a></p>
+                 <h4>Acteurs :</h4>
                 <ul>
                 <?php
                         foreach($requeteCast->fetchAll() as $castActeur){ ?>

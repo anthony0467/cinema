@@ -29,15 +29,24 @@ class CinemaController {
         $requeteDetailFilm->execute(["id" => $id]);
 
 
-        
+        // casting acteur
         $requeteCast = $pdo->prepare("
-        SELECT prenom, nom, a.id_acteur 
+        SELECT prenom, nom, a.id_acteur, id_realisateur 
         FROM acteur a
         INNER JOIN personne p ON p.id_personne = a.id_personne
         INNER JOIN casting c ON c.id_acteur = a.id_acteur
         INNER JOIN film f ON f.id_film = c.id_film
         WHERE f.id_film = :id");
         $requeteCast->execute(["id"=>$id]);
+
+        // real film
+        $requeteReal = $pdo->prepare("
+        SELECT prenom, nom, r.id_realisateur 
+        FROM realisateur r
+        INNER JOIN personne p ON p.id_personne = r.id_personne
+        INNER JOIN film f ON f.id_realisateur = r.id_realisateur
+        WHERE f.id_film = :id");
+        $requeteReal->execute(["id"=>$id]);
 
         //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
         require "view/detailFilm.php";

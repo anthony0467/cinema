@@ -1,13 +1,33 @@
+-- --------------------------------------------------------
+-- Hôte:                         127.0.0.1
+-- Version du serveur:           5.7.33 - MySQL Community Server (GPL)
+-- SE du serveur:                Win64
+-- HeidiSQL Version:             11.2.0.6213
+-- --------------------------------------------------------
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Listage de la structure de la base pour cinema_anthony
+CREATE DATABASE IF NOT EXISTS `cinema_anthony` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `cinema_anthony`;
+
+-- Listage de la structure de la table cinema_anthony. acteur
 CREATE TABLE IF NOT EXISTS `acteur` (
-  `id_acteur` int NOT NULL AUTO_INCREMENT,
-  `id_personne` int NOT NULL DEFAULT '0',
+  `id_acteur` int(11) NOT NULL AUTO_INCREMENT,
+  `id_personne` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_acteur`),
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `acteur__personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=12;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_anthony.acteur : ~11 rows (environ)
+/*!40000 ALTER TABLE `acteur` DISABLE KEYS */;
 INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(1, 4),
 	(2, 5),
@@ -20,21 +40,23 @@ INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(9, 12),
 	(10, 13),
 	(11, 14);
+/*!40000 ALTER TABLE `acteur` ENABLE KEYS */;
 
--- Listage de la structure de table cinema_anthony. casting
+-- Listage de la structure de la table cinema_anthony. casting
 CREATE TABLE IF NOT EXISTS `casting` (
-  `id_acteur` int DEFAULT NULL,
-  `id_film` int DEFAULT NULL,
-  `id_role` int DEFAULT NULL,
+  `id_acteur` int(11) DEFAULT NULL,
+  `id_film` int(11) DEFAULT NULL,
+  `id_role` int(11) DEFAULT NULL,
   KEY `id_acteur` (`id_acteur`),
   KEY `id_film` (`id_film`),
   KEY `id_role` (`id_role`),
   CONSTRAINT `casting__acteur` FOREIGN KEY (`id_acteur`) REFERENCES `acteur` (`id_acteur`),
   CONSTRAINT `casting__film` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
   CONSTRAINT `casting__role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
-) ENGINE=InnoDB DEFAULT    ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_anthony.casting : ~32 rows (environ)
+/*!40000 ALTER TABLE `casting` DISABLE KEYS */;
 INSERT INTO `casting` (`id_acteur`, `id_film`, `id_role`) VALUES
 	(1, 1, 2),
 	(1, 2, 2),
@@ -67,19 +89,22 @@ INSERT INTO `casting` (`id_acteur`, `id_film`, `id_role`) VALUES
 	(10, 11, 9),
 	(10, 7, 9),
 	(11, 1, 6),
-	(11, 3, 6);
+	(11, 3, 6),
+	(1, 13, 11);
+/*!40000 ALTER TABLE `casting` ENABLE KEYS */;
 
--- Listage de la structure de table cinema_anthony. categoriser
+-- Listage de la structure de la table cinema_anthony. categoriser
 CREATE TABLE IF NOT EXISTS `categoriser` (
-  `id_film` int DEFAULT NULL,
-  `id_genre` int DEFAULT NULL,
+  `id_film` int(11) DEFAULT NULL,
+  `id_genre` int(11) DEFAULT NULL,
   KEY `id_film` (`id_film`),
   KEY `id_genre` (`id_genre`),
   CONSTRAINT `categoriser__film` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
   CONSTRAINT `categoriser__genre` FOREIGN KEY (`id_genre`) REFERENCES `genre` (`id_genre`)
-) ENGINE=InnoDB DEFAULT    ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_anthony.categoriser : ~19 rows (environ)
+-- Listage des données de la table cinema_anthony.categoriser : ~38 rows (environ)
+/*!40000 ALTER TABLE `categoriser` DISABLE KEYS */;
 INSERT INTO `categoriser` (`id_film`, `id_genre`) VALUES
 	(1, 1),
 	(2, 1),
@@ -99,24 +124,45 @@ INSERT INTO `categoriser` (`id_film`, `id_genre`) VALUES
 	(11, 6),
 	(12, 3),
 	(12, 4),
+	(12, 5),
+	(1, 1),
+	(2, 1),
+	(3, 1),
+	(4, 2),
+	(4, 6),
+	(5, 2),
+	(5, 6),
+	(6, 2),
+	(6, 6),
+	(7, 2),
+	(7, 6),
+	(8, 1),
+	(9, 1),
+	(10, 1),
+	(11, 2),
+	(11, 6),
+	(12, 3),
+	(12, 4),
 	(12, 5);
+/*!40000 ALTER TABLE `categoriser` ENABLE KEYS */;
 
--- Listage de la structure de table cinema_anthony. film
+-- Listage de la structure de la table cinema_anthony. film
 CREATE TABLE IF NOT EXISTS `film` (
-  `id_film` int NOT NULL AUTO_INCREMENT,
-  `titre` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `annee_sortie_film` int NOT NULL,
+  `id_film` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(60) NOT NULL,
+  `annee_sortie_film` int(11) NOT NULL,
   `synopsis` longtext,
-  `duree_minute` int NOT NULL,
-  `note` int DEFAULT NULL,
+  `duree_minute` int(11) NOT NULL,
+  `note` int(11) DEFAULT NULL,
   `affiche` varchar(255) DEFAULT NULL,
-  `id_realisateur` int DEFAULT NULL,
+  `id_realisateur` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_film`),
   KEY `id_realisateur` (`id_realisateur`),
   CONSTRAINT `FK_film_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT    ;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_anthony.film : ~14 rows (environ)
+/*!40000 ALTER TABLE `film` DISABLE KEYS */;
 INSERT INTO `film` (`id_film`, `titre`, `annee_sortie_film`, `synopsis`, `duree_minute`, `note`, `affiche`, `id_realisateur`) VALUES
 	(1, 'Le seigneur des anneaux la communauté de l\'anneau', 2001, 'Un jeune et timide Hobbit, Frodon Sacquet, hérite d\'un anneau magique. Bien loin d\'être une simple babiole, il s\'agit d\'un instrument de pouvoir absolu qui permettrait à Sauron, le "Seigneur des ténèbres", de régner sur la Terre du Milieu et de réduire en esclavage ses peuples. Frodon doit parvenir, avec l\'aide de la communauté de l\'anneau, jusqu\'à la "Crevasse du Destin" pour le détruire.', 178, 5, NULL, 1),
 	(2, 'Le seigneur des anneaux - les deux tours', 2002, ' Après la mort de Boromir et la disparition de Gandalf, la Communauté s\'est scindée en trois. Perdus dans les collines d\'Emyn Muil, Frodon et Sam découvrent qu\'ils sont suivis par Gollum, une créature versatile corrompue par l\'Anneau. Celui-ci promet de conduire les Hobbits jusqu\'à la Porte Noire du Mordor.', 179, 5, NULL, 1),
@@ -132,15 +178,17 @@ INSERT INTO `film` (`id_film`, `titre`, `annee_sortie_film`, `synopsis`, `duree_
 	(12, 'Danse avec les loups', 1991, 'Dans un avant-poste de l\'Ouest américain, la vie d\'un soldat est transformée au contact d\'une tribu indienne.', 181, 5, NULL, 4),
 	(13, 'History of violence', 2005, 'Lorsqu\'une paire de petits criminels tente de voler son restaurant de petite ville, Tom Stall les tue rapidement. Au milieu de la couverture médiatique des actions apparemment héroïques de Tom, un étranger menaçant nommé Carl Fogarty arrive en ville et révèle que le père de famille serait en fait un criminel de Philadelphie disparu depuis longtemps. À la grande horreur de sa femme, Edie, et de son fils adolescent, Jack, Tom découvre qu\'il doit affronter son passé violent.', 96, 4, NULL, 5),
 	(14, 'Avatar 2', 2022, 'Jake Sully et Ney\'tiri ont formé une famille et font tout pour rester aussi soudés que possible. Ils sont cependant contraints de quitter leur foyer et d\'explorer les différentes régions encore mystérieuses de Pandora. Lorsqu\'une ancienne menace refait surface, Jake va devoir mener une guerre difficile contre les humains.', 192, 3, NULL, 6);
+/*!40000 ALTER TABLE `film` ENABLE KEYS */;
 
--- Listage de la structure de table cinema_anthony. genre
+-- Listage de la structure de la table cinema_anthony. genre
 CREATE TABLE IF NOT EXISTS `genre` (
-  `id_genre` int NOT NULL AUTO_INCREMENT,
+  `id_genre` int(11) NOT NULL AUTO_INCREMENT,
   `nom_genre` varchar(20) NOT NULL,
   PRIMARY KEY (`id_genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT    ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_anthony.genre : ~6 rows (environ)
+/*!40000 ALTER TABLE `genre` DISABLE KEYS */;
 INSERT INTO `genre` (`id_genre`, `nom_genre`) VALUES
 	(1, 'Fantasy'),
 	(2, 'Super-héros'),
@@ -148,18 +196,20 @@ INSERT INTO `genre` (`id_genre`, `nom_genre`) VALUES
 	(4, 'Drame'),
 	(5, 'Western'),
 	(6, 'Action');
+/*!40000 ALTER TABLE `genre` ENABLE KEYS */;
 
--- Listage de la structure de table cinema_anthony. personne
+-- Listage de la structure de la table cinema_anthony. personne
 CREATE TABLE IF NOT EXISTS `personne` (
-  `id_personne` int NOT NULL AUTO_INCREMENT,
+  `id_personne` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `sexe` varchar(50) NOT NULL,
   `date_naissance` date NOT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT    ;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_anthony.personne : ~16 rows (environ)
+/*!40000 ALTER TABLE `personne` DISABLE KEYS */;
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `date_naissance`) VALUES
 	(1, 'Jackson', 'Peter', 'H', '1961-10-31'),
 	(2, 'Nolan', 'Christopher', 'H', '1970-07-30'),
@@ -177,17 +227,19 @@ INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `date_naissance`
 	(14, 'Holm', 'Ian', 'H', '1931-09-12'),
 	(15, 'Cronenberg', 'David', 'H', '1943-03-15'),
 	(16, 'Cameron', 'James', 'H', '1954-08-16');
+/*!40000 ALTER TABLE `personne` ENABLE KEYS */;
 
--- Listage de la structure de table cinema_anthony. realisateur
+-- Listage de la structure de la table cinema_anthony. realisateur
 CREATE TABLE IF NOT EXISTS `realisateur` (
-  `id_realisateur` int NOT NULL AUTO_INCREMENT,
-  `id_personne` int DEFAULT NULL,
+  `id_realisateur` int(11) NOT NULL AUTO_INCREMENT,
+  `id_personne` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_realisateur`),
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_anthony.realisateur : ~6 rows (environ)
+/*!40000 ALTER TABLE `realisateur` DISABLE KEYS */;
 INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(1, 1),
 	(2, 2),
@@ -195,15 +247,17 @@ INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(4, 13),
 	(5, 15),
 	(6, 16);
+/*!40000 ALTER TABLE `realisateur` ENABLE KEYS */;
 
--- Listage de la structure de table cinema_anthony. role
+-- Listage de la structure de la table cinema_anthony. role
 CREATE TABLE IF NOT EXISTS `role` (
-  `id_role` int NOT NULL AUTO_INCREMENT,
+  `id_role` int(11) NOT NULL AUTO_INCREMENT,
   `nom_role` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT    ;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_anthony.role : ~10 rows (environ)
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
 INSERT INTO `role` (`id_role`, `nom_role`) VALUES
 	(1, 'Batman'),
 	(2, 'Aragorn'),
@@ -214,9 +268,10 @@ INSERT INTO `role` (`id_role`, `nom_role`) VALUES
 	(7, 'John Dunbar'),
 	(8, 'Superman'),
 	(9, 'Jonathan Kent'),
-	(10, 'Arwen');
+	(10, 'Arwen'),
+	(11, 'Tom Stall');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
