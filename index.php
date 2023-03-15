@@ -33,7 +33,9 @@ if(isset($_GET["action"])){
         case "listActeurs" : $ctrActeur->listActeurs(); break;
         case "detailActeur" : $ctrActeur->detailActeur($id); break;
         case "listReals" : $ctrReal->listReals(); break;
+        case "detailReal" : $ctrReal->detailReal($id); break;
         case "listGenres" : $ctrGenre->listGenres(); break;
+        case "detailGenre" : $ctrGenre->detailGenre(); break;
         case "listRoles" : $ctrRole->listRoles(); break;
     }
 }
