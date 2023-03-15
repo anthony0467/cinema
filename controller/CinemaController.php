@@ -23,9 +23,10 @@ class CinemaController {
         // on se connecte et On exécute la requête de notre choix 
         $pdo = Connect::seConnecter();
         $requeteDetailFilm = $pdo->prepare("
-        SELECT titre, annee_sortie_film, duree_minute, note, synopsis, affiche, id_film, id_realisateur
-        FROM film 
-        WHERE id_film = :id");
+            SELECT titre, annee_sortie_film, TIME_FORMAT(SEC_TO_TIME((duree_minute * 60)), '%H:%i') AS duree_film, note, synopsis, affiche, id_film, id_realisateur
+            FROM film 
+            WHERE id_film = :id
+            ");
         $requeteDetailFilm->execute(["id" => $id]);
 
          // genre film
@@ -40,11 +41,12 @@ class CinemaController {
 
         // casting acteur
         $requeteCast = $pdo->prepare("
-        SELECT prenom, nom, a.id_acteur, id_realisateur 
+        SELECT prenom, nom, a.id_acteur, id_realisateur, nom_role
         FROM acteur a
         INNER JOIN personne p ON p.id_personne = a.id_personne
         INNER JOIN casting c ON c.id_acteur = a.id_acteur
         INNER JOIN film f ON f.id_film = c.id_film
+        INNER JOIN role r ON r.id_role = c.id_role
         WHERE f.id_film = :id");
         $requeteCast->execute(["id"=>$id]);
 

@@ -5,6 +5,7 @@ $dateReal = $realDetail['date_naissance'];
             
             <article>
                 <h3><?=  $realDetail['prenom'], ' ', $realDetail['nom']  ?></h3>
+                <img src="<?= $realDetail['photo'] ?>" height="auto" width="300px" >
                 <p>Sexe: <?= $realDetail['sexe']  ?></p>
                  <p>Date de naissance : <?= date('d-m-Y', strtotime($dateReal)) ?></p>
                  <h3>Filmographie</h3>
@@ -30,8 +31,8 @@ $dateReal = $realDetail['date_naissance'];
 
 <?php
 
-$titre = "Fiche acteur";
-$titre_secondaire = "Fiche acteur";
+$titre = "Fiche réalisateur";
+$titre_secondaire = "Fiche réalisateur";
 $contenu = ob_get_clean();
 require "view/template.php";
 

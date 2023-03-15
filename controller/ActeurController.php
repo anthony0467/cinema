@@ -26,7 +26,7 @@ class ActeurController {
         // on se connecte et On exécute la requête de notre choix 
         $pdo = Connect::seConnecter();
         $requeteDetail = $pdo->prepare("
-        SELECT id_acteur, nom, prenom, sexe, date_naissance
+        SELECT id_acteur, nom, prenom, sexe, date_naissance, photo
         FROM personne p
         INNER JOIN acteur a ON p.id_personne = a.id_personne
         WHERE a.id_acteur = :id ");

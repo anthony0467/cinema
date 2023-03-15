@@ -25,9 +25,9 @@ class RealController {
         // on se connecte et On exécute la requête de notre choix 
         $pdo = Connect::seConnecter();
         $requeteDetail = $pdo->prepare("
-        SELECT prenom, nom, sexe, date_naissance, id_realisateur
+        SELECT id_realisateur, nom, prenom, sexe, date_naissance, photo
         FROM realisateur r
-        INNER JOIN personne p ON p.id_personne = r.id_realisateur
+        INNER JOIN personne p ON p.id_personne = r.id_personne
         WHERE id_realisateur = :id ");
         $requeteDetail->execute(["id"=>$id]);
 
