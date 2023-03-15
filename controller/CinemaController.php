@@ -28,6 +28,15 @@ class CinemaController {
         WHERE id_film = :id");
         $requeteDetailFilm->execute(["id" => $id]);
 
+         // genre film
+         $requeteGenre = $pdo->prepare("
+            SELECT nom_genre,  f.id_film, g.id_genre
+            FROM film f
+            INNER JOIN categoriser c ON c.id_film = f.id_film
+            INNER JOIN genre g ON g.id_genre = c.id_genre
+            WHERE c.id_film = :id");
+         $requeteGenre->execute(["id"=>$id]);
+
 
         // casting acteur
         $requeteCast = $pdo->prepare("

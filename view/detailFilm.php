@@ -12,6 +12,14 @@ $filmReal = $requeteReal->fetch();
                 <h4>Réalisateur :</h4>
                 <p><a href="index.php?action=detailReal&id=<?= $filmReal['id_realisateur'] ?>"
                  ><?= $filmReal['prenom'], ' ', $filmReal['nom'] ?></a></p>
+                 <h4>Genre :</h4>
+                 <ul>
+                 <?php  
+                 foreach($requeteGenre->fetchAll() as $filmGenre){ ?>
+                        <li><a href="index.php?action=detailGenre&id=<?= $filmGenre["id_genre"] ?>"><?= $filmGenre['nom_genre'] ?></a></li>
+                    
+                 <?php } ?>
+                 </ul>
                  <h4>Acteurs :</h4>
                 <ul>
                 <?php
