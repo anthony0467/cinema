@@ -21,7 +21,7 @@ $dateActeur = $acteurDetail['date_naissance'];
                         foreach($requeteFilmo->fetchAll() as $filmo){ ?>
                             <tr>
                                 <td><a href="index.php?action=detailFilm&id=<?= $filmo["id_film"] ?>"><?= $filmo["titre"] ?></a></td>
-                                <td><a href="index.php?action=detailActeur&id=<?= $acteur["id_acteur"] ?>"><?= $filmo["nom_role"] ?></a></td>
+                                <td><a href="index.php?action=detailRole&id=<?= $filmo["id_role"] ?>"><?= $filmo["nom_role"] ?></a></td>
                             </tr>
                     <?php } ?>
                     </tbody>

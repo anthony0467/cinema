@@ -33,7 +33,7 @@ class ActeurController {
         $requeteDetail->execute(["id"=>$id]);
 
         $requeteFilmo = $pdo->prepare("
-        SELECT titre, nom_role, f.id_film
+        SELECT titre, nom_role, f.id_film, r.id_role
         FROM film f
         INNER JOIN casting c ON c.id_film = f.id_film
         INNER JOIN role r ON r.id_role = c.id_role
