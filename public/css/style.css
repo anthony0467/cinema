@@ -1,0 +1,204 @@
+/************RESET***************/
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;700;900&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    font-family: 'Kanit', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+ol, ul {
+	list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+    transition: .35s;
+}
+
+a:hover{
+    color: #9b1414;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/***********GENERAL***********/
+
+td{
+    padding: .5rem;
+}
+
+
+/****************nav**************/
+
+nav{
+    background-color: #9b1414;
+}
+
+
+nav li{
+    padding: 1rem;
+    transition: .35s;
+}
+
+nav li:hover{
+    background-color: #b31f1f;
+}
+
+nav li a{
+    color: #fff;
+}
+
+nav li a:hover{
+    color: #fff;
+}
+
+
+
+/********homepage*********/
+
+.container-home{
+    min-height: 90vh;
+    animation: slider 15s linear alternate infinite;
+    background-size: cover;
+    background-position: top center;
+    width: 100%;
+}
+
+.container-main{
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+@keyframes slider {
+    0% {
+        background-image: url(../img/Avatar.jpg);
+        animation-timing-function: ease-in-out;
+        animation-duration: 3s;
+    }
+  
+    30% {
+      background-image: url(../img/batman.jpg);
+         animation-timing-function: ease-in-out;
+        animation-duration: 3s;
+    }
+   
+   
+  
+    60% {
+      background-image: url(../img/seigneur.jpg);
+         animation-timing-function: ease-in-out;
+        animation-duration: 3s;
+    }
+      
+    
+  
+    100% {
+      background-image: url(../img/violence.jpg);
+         animation-timing-function: ease-in-out;
+        animation-duration: 3s;
+    }
+  }
+
+
+
+
+  /*************CLASS**********/
+
+  .container{
+    margin-left: auto;
+    width: 80%;
+    margin-right: auto;
+  }
+
+.flex{
+    display: flex;
+}
+
+.gap{
+    gap: 1rem;
+}
+
+.gap-05{
+    gap:.5rem;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.row{
+    flex-direction: row;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.title-home{
+    font-size: 48px;
+    background: #0000008a;
+    padding: 1rem;
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.pad-025{
+    padding: 0 .25rem;
+}
+
+.pad-x1{
+    padding: 1rem;
+}
+
+.pad-x2{
+    padding: 2rem;
+}
+
+.width-400{
+    max-width: 400px;
+}

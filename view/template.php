@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="public/css/style.css">
     <title><?= $titre ?></title>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
+            <ul class="flex flex-center wrap">
+                <li>
+                    <a href="index.php">Accueil</a>
+                </li>
                 <li>
                     <a href="index.php?action=listFilms">Voir les films disponibles</a>
                 </li>
@@ -36,9 +40,12 @@
 
     </header>
    <main>
-        <h1>PDO Cinéma</h1>
+    <div class="flex gap pad-x1">
+    <h1>PDO Cinéma</h1>
         <h2><?= $titre_secondaire ?></h2>
-        <div><?= $contenu ?></div>
+    </div>
+        
+        <div class="container-main"><?= $contenu ?></div>
    </main>
     
 </body>

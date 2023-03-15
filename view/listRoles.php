@@ -2,7 +2,7 @@
 $type = " roles";
  ?>
 
-<p class="uk-label uk-label-warning">Il y a <?= $requete->rowCount() .$type ?></p>
+<p class="uk-label uk-label-warning txt-center">Total : <?= $requete->rowCount() .$type ?></p>
 
 <table class="uk-table uk-table-striped">
     <thead>

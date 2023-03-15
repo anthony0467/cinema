@@ -5,8 +5,9 @@ $titre_secondaire = 'Accueil';
 ob_start()
 ?>
 
-
-    <h2>exercice cinéma</h2>
+    <div class="container-home flex column flex-center">
+        <h2 class="title-home txt-center">Éxercice cinéma</h2>
+    </div>
 
 
     <?php 

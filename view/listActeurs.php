@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning">Il y a <?= $requete->rowCount() ?> acteurs</p>
+<p class="uk-label uk-label-warning txt-center">Total : <?= $requete->rowCount() ?> acteurs</p>
 
 <table class="uk-table uk-table-striped">
     <thead>
