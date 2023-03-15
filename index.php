@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 
 use Controller\CinemaController;
@@ -30,18 +30,23 @@ if(isset($_GET["action"])){
 
         case "listFilms" : $ctrlCinema->listFilms(); break;
         case "detailFilm" : $ctrlCinema->detailFilm($id); break;
+
         case "listActeurs" : $ctrActeur->listActeurs(); break;
         case "detailActeur" : $ctrActeur->detailActeur($id); break;
+
         case "listReals" : $ctrReal->listReals(); break;
         case "detailReal" : $ctrReal->detailReal($id); break;
+
         case "listGenres" : $ctrGenre->listGenres(); break;
         case "detailGenre" : $ctrGenre->detailGenre($id); break;
+
         case "listRoles" : $ctrRole->listRoles(); break;
+        case "detailRole" : $ctrRole->detailRole($id); break;
     }
 }
 
 else {
-    session_destroy();
+   
     $ctrlHome->getHomepage();
 }
 
