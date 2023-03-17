@@ -43,8 +43,8 @@ q:before, q:after {
 	content: none;
 }
 table {
-    margin-left: auto;
-    margin-right: auto;
+   /* margin-left: auto;
+    margin-right: auto;*/
 	border-collapse: collapse;
 	border-spacing: 0;
 }
@@ -52,6 +52,7 @@ table {
 
 
 /***********GENERAL***********/
+
 
 td{
     padding: .5rem;
@@ -66,8 +67,8 @@ nav{
 
 
 nav li{
-    padding: 1rem;
     transition: .35s;
+    padding: 1rem 0;
 }
 
 nav li:hover{
@@ -76,6 +77,7 @@ nav li:hover{
 
 nav li a{
     color: #fff;
+    padding: 1rem;
 }
 
 nav li a:hover{
@@ -83,6 +85,12 @@ nav li a:hover{
 }
 
 
+/*************form-film**************/
+
+fieldset{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 /********homepage*********/
 
@@ -144,6 +152,32 @@ nav li a:hover{
     justify-content: center;
     align-items: center;
     gap: 1rem;
+}
+
+.container-formFilm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    width: 100%;
+    gap: 2rem;
+}
+
+.container-formFilm form{
+    margin: 0 2rem;
+    padding: 1.5rem;
+    background-color: #b31f1f;
+    border-radius: 45px;
+    justify-content: center;
+   
+}
+
+.container-formFilm form *{
+    font-size: 16px;
+}
+
+.container-formFilm form h3{
+    font-size: 20px;
 }
 
 .container-main *{
@@ -208,3 +242,18 @@ font-size: 20px;
 .width-400{
     max-width: 400px;
 }
+
+.table-film{
+    flex-grow: 1;
+}
+
+.btn{
+    cursor: pointer;
+    color: #fff;
+    padding: 0.5rem 0;
+    border-radius: 35px;
+    background: rgb(0,0,0);
+    background: linear-gradient(22deg, rgba(0,0,0,1) 76%, rgba(255,255,255,1) 100%);
+    transition: .35s;
+}
+

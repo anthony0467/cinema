@@ -15,6 +15,21 @@ class CinemaController {
         SELECT titre, annee_sortie_film, id_film
         FROM film 
         ORDER BY annee_sortie_film DESC");
+
+        // list real (formulaire)
+        $requetelistReal = $pdo->prepare("
+        SELECT CONCAT(prenom, ' ', nom) AS realisateur, id_realisateur 
+        FROM personne p
+        INNER JOIN realisateur r ON p.id_personne = r.id_personne
+        WHERE r.id_personne ");
+        $requetelistReal->execute([]);
+
+         //liste genre (formulaire)
+         $requeteGenreFilm = $pdo->prepare("
+         SELECT nom_genre, id_genre
+         FROM genre ");
+         $requeteGenreFilm->execute([]);
+
         //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
         require "view/listFilms.php";
     }
@@ -59,8 +74,49 @@ class CinemaController {
         WHERE f.id_film = :id");
         $requeteReal->execute(["id"=>$id]);
 
+       
         //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
         require "view/detailFilm.php";
+    }
+
+    public function addFilm(){
+
+       
+        if(isset($_POST["submit"])){
+
+            // on se connecte et On exécute la requête de notre choix 
+            $pdo = Connect::seConnecter();
+            $nomFilm = filter_input(INPUT_POST, "nomFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $realFilm = filter_input(INPUT_POST, 'realFilm', FILTER_SANITIZE_SPECIAL_CHARS);
+            $genreFilm = filter_input(INPUT_POST, 'genre',FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+            //var_dump($genreFilm);
+            //die();
+            $dureeFilm = filter_input(INPUT_POST, "dureeFilm", FILTER_VALIDATE_INT);
+            $afficheFilm = filter_input(INPUT_POST, "afficheFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $anneeFilm = filter_input(INPUT_POST, "anneeFilm", FILTER_VALIDATE_INT);
+            $noteFilm = filter_input(INPUT_POST, "noteFilm", FILTER_VALIDATE_INT);
+            $requeteaddFilm = $pdo->prepare("
+            INSERT INTO film (titre, id_realisateur, duree_minute, affiche, synopsis, annee_sortie_film, note) VALUES (:nomFilm, :realFilm,  :dureeFilm, :afficheFilm, :synopsis, :anneeFilm, :noteFilm);");
+            $requeteaddFilm->execute(["nomFilm" => $nomFilm, "realFilm" => $realFilm, "dureeFilm" => $dureeFilm, "afficheFilm" => $afficheFilm, "synopsis" => $synopsis, "anneeFilm" => $anneeFilm, "noteFilm" => $noteFilm]);
+
+            // méthode pour récupéré l'id de l'element inséré 
+            $last_id = $pdo->lastInsertId();
+
+            
+            foreach($genreFilm as $genre){
+                $requeteAddGenre = $pdo->prepare("
+                INSERT INTO categoriser (id_film, id_genre) 
+                VALUES (:id, :genreId)");
+            $requeteAddGenre->execute(["id"=>$last_id, "genreId" => $genre]);
+            }
+
+            
+            
+            
+        
+            header("Location: index.php?action=listFilms");
+      }
     }
 }
 

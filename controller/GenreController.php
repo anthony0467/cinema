@@ -42,6 +42,22 @@ class GenreController {
           //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
           require "view/detailGenre.php";
     }
+
+    public function addGenre(){
+       
+      if(isset($_POST["submit"])){
+
+          // on se connecte et On exécute la requête de notre choix 
+          $pdo = Connect::seConnecter();
+          $nomGenre = filter_input(INPUT_POST, "nomGenre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          $requeteaddGenre = $pdo->prepare("
+          INSERT INTO genre (nom_genre) VALUES (:nomGenre);");
+          $requeteaddGenre->execute(["nomGenre" => $nomGenre]);
+          //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
+      
+          header("Location: index.php?action=listGenres");
+    }
+  }
 }
 
 
