@@ -52,7 +52,10 @@ table {
 
 
 /***********GENERAL***********/
-
+input, textarea, select{
+    padding-left: .5rem;
+    margin: .5rem 0;
+}
 
 td{
     padding: .5rem;
@@ -60,6 +63,50 @@ td{
 
 
 /****************nav**************/
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color: #9b1414;
+    position: relative;
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: none;
+  }
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    background-color: #9b1414;
+    color: white;
+  }
+
+
+
+  /***********nav-large**************/
 
 nav{
     background-color: #9b1414;
@@ -164,10 +211,6 @@ fieldset{
 }
 
 .container-formFilm form{
-    margin: 0 2rem;
-    padding: 1.5rem;
-    background-color: #b31f1f;
-    border-radius: 45px;
     justify-content: center;
    
 }
@@ -250,10 +293,29 @@ font-size: 20px;
 .btn{
     cursor: pointer;
     color: #fff;
-    padding: 0.5rem 0;
-    border-radius: 35px;
+    padding: 0.35rem 1.5rem;
     background: rgb(0,0,0);
-    background: linear-gradient(22deg, rgba(0,0,0,1) 76%, rgba(255,255,255,1) 100%);
     transition: .35s;
+
 }
 
+.form-style{
+    margin: 0 2rem;
+    padding: 1.5rem;
+    background-color: #b31f1f;
+    justify-content: center;
+}
+
+#nav-large{
+    display: none;
+}
+
+@media screen and (min-width: 640px) {
+    .topnav{
+        display: none;
+    }
+
+    #nav-large{
+        display: flex;
+    }
+  }

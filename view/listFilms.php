@@ -25,7 +25,7 @@
 
 
 
-<form action="index.php?action=addFilm" method="POST" class="flex  column gap">
+<form action="index.php?action=addFilm" method="POST" class="flex  column gap form-style">
     <h3 class="txt-center">Ajouter un film</h3>
     <input type="text" name="nomFilm" id="nomFilm" placeholder="Ajouter un titre">
     <select name="realFilm" id="realFilm">

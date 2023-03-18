@@ -4,7 +4,7 @@ $type = " roles";
 
 <p class="uk-label uk-label-warning txt-center">Total : <?= $requete->rowCount() .$type ?></p>
 
-<form action="index.php?action=addRole" method="POST">
+<form action="index.php?action=addRole" class="form-style" method="POST">
     <input type="text" name="nomRole" id="nomRole" placeholder="Ajouter un role">
     <input type="submit" name="submit" class="btn" value="Ajouter">
 </form>

@@ -4,7 +4,7 @@ $type = " genres";
 
 <p class="uk-label uk-label-warning txt-center">Total : <?= $requete->rowCount() .$type ?></p>
 
-<form action="index.php?action=addGenre" method="POST">
+<form action="index.php?action=addGenre" class="form-style" method="POST">
     <input type="text" name="nomGenre" id="nomGenre" placeholder="Ajouter un genre">
     <input type="submit" name="submit" class="btn" value="Ajouter">
 </form>
