@@ -8,11 +8,10 @@ $dateReal = $realDetail['date_naissance'];
                 <img src="<?= $realDetail['photo'] ?>" height="auto" width="300px" >
                 <p>Sexe: <?= $realDetail['sexe']  ?></p>
                  <p>Date de naissance : <?= date('d-m-Y', strtotime($dateReal)) ?></p>
-                 <h3>Filmographie</h3>
                  <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
-                            <th>Film</th>
+                            <th>Filmographie :</th>
                         </tr>
                     </thead>
                     <tbody>

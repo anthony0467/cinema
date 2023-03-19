@@ -2,13 +2,13 @@
 $filmDetail = $requeteDetailFilm->fetch();
 $filmReal = $requeteReal->fetch();
  ?>
-            
+            <h3><?=  $filmDetail['titre'] ?></h3>
             <article class="flex row flex-center gap wrap">
                 <figure>
                     <img src="<?= $filmDetail['affiche'] ?>" height="auto" width="300px" alt="affiche cinéma" title="<?=  $filmDetail['titre'] ?>">
                 </figure>
                 <div class="width-400 pad-x2">
-                    <h3><?=  $filmDetail['titre'] ?></h3>
+                    
                     <p>Année de Sortie : <?= $filmDetail['annee_sortie_film'] ?></p>
                     <p>Durée du film : <?= $filmDetail['duree_film'] ?></p>
                     <p>Note : <?php for ($i = 1; $i <= 5; $i++) { // systeme de notation étoile

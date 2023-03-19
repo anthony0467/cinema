@@ -2,17 +2,23 @@
 
 <p class="uk-label uk-label-warning txt-center">Total : <?= $requete->rowCount() ?> réalisateurs</p>
 
+<form action="index.php?action=addPersonne&type=<?= $_GET["type"] ?>" class="form-style" method="POST">
+    <input type="text" name="nom" id="nom" placeholder="Ajouter un nom">
+    <input type="text" name="prenom" id="prenom" placeholder="Ajouter un prénom">
+    <input type="submit" name="submit" class="btn" value="Ajouter">
+</form>
+
 <table class="uk-table uk-table-striped">
     <thead>
         <tr>
             <th>REALISATEUR</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="body-actor-real">
         <?php
         foreach($requete->fetchAll() as $real){ ?>
             <tr>
-                <td><a href="index.php?action=detailReal&id=<?= $real["id_realisateur"] ?>"><?= $real["realisateur"] ?></a></td>
+                <td class="actor-real-list"><img src="<?= $real['photo'] ?>" alt="<?= $real['photo'] ?>" height="auto" width="50px"><a href="index.php?action=detailReal&id=<?= $real["id_realisateur"] ?>"><?= $real["realisateur"] ?></a></td>
             </tr>
        <?php } ?>
     </tbody>

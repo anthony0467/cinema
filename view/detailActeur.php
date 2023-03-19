@@ -8,7 +8,7 @@ $dateActeur = $acteurDetail['date_naissance'];
                 <img src="<?= $acteurDetail['photo'] ?>" height="auto" width="300px" >
                 <p>Sexe: <?= $acteurDetail['sexe']  ?></p>
                  <p>Date de naissance : <?= date('d-m-Y', strtotime($dateActeur)) ?></p>
-                 <h3>Filmographie</h3>
+                 <h4>Filmographie</h4>
                  <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>

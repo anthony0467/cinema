@@ -8,11 +8,11 @@
             <th>ACTEUR</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="body-actor-real">
         <?php
         foreach($requete->fetchAll() as $acteur){ ?>
             <tr>
-                <td><a href="index.php?action=detailActeur&id=<?= $acteur["id_acteur"] ?>"><?= $acteur["acteur"] ?></a></td>
+                <td class="actor-real-list"><img src="<?= $acteur['photo'] ?>" alt="<?= $acteur['photo'] ?>" height="auto" width="50px"><a href="index.php?action=detailActeur&id=<?= $acteur["id_acteur"] ?>"><?= $acteur["acteur"] ?></a></td>
             </tr>
        <?php } ?>
     </tbody>

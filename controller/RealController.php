@@ -12,7 +12,7 @@ class RealController {
         // on se connecte et On exécute la requête de notre choix 
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-        SELECT CONCAT(prenom, ' ', nom) AS realisateur, id_realisateur 
+        SELECT CONCAT(prenom, ' ', nom) AS realisateur, photo, id_realisateur 
         FROM personne p
         INNER JOIN realisateur r ON p.id_personne = r.id_personne
         WHERE r.id_personne ");

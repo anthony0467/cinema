@@ -52,14 +52,14 @@ table {
 
 
 /***********GENERAL***********/
+
+
 input, textarea, select{
     padding-left: .5rem;
     margin: .5rem 0;
 }
 
-td{
-    padding: .5rem;
-}
+
 
 
 /****************nav**************/
@@ -227,6 +227,10 @@ fieldset{
 font-size: 20px;
 }
 
+.container-main h3{
+    font-size: 45px;
+}
+
 .flex{
     display: flex;
 }
@@ -287,6 +291,7 @@ font-size: 20px;
 }
 
 .table-film{
+    margin: .5rem;
     flex-grow: 1;
 }
 
@@ -304,10 +309,34 @@ font-size: 20px;
     padding: 1.5rem;
     background-color: #b31f1f;
     justify-content: center;
+   
+}
+
+.form-style *{
+    font-size: 16px;
 }
 
 #nav-large{
     display: none;
+}
+
+.bg-bordeau{
+    border:1px solid #9b1414;
+}
+
+/********* list actor/real *********/
+
+
+.actor-real-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.marg-05{
+    margin-right: .5rem;
 }
 
 @media screen and (min-width: 640px) {
@@ -318,4 +347,20 @@ font-size: 20px;
     #nav-large{
         display: flex;
     }
+
+
+    .body-actor-real{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+  }
+
+
+  @media screen and (min-width: 850px) {
+
+    .body-actor-real{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
   }

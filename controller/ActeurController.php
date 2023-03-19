@@ -12,7 +12,7 @@ class ActeurController {
         // on se connecte et On exécute la requête de notre choix 
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-        SELECT CONCAT(prenom,' ', nom) AS acteur, id_acteur
+        SELECT CONCAT(prenom,' ', nom) AS acteur, photo, id_acteur
         FROM personne p
         INNER JOIN acteur a ON p.id_personne = a.id_personne
         WHERE a.id_personne ");
