@@ -47,6 +47,13 @@ $filmReal = $requeteReal->fetch();
                     </ul>
                     <h4>Synopsis :</h4>
                     <p><?= $filmDetail['synopsis'] ?></p>
+                    <p>Nombre de like: <?= $filmDetail['nb_like'] ?></p>
+                    <div>
+                        <p>J'ai aimé le film : </p>
+                        <form method="post" action="index.php?action=addLike&id=<?= $filmDetail['id_film'] ?>">
+                            <button type="submit" name="submit"><i class="fa-regular fa-heart"></i>Like</button>
+                        </form>
+                    </div>
                 </div>
 
             </article>

@@ -38,7 +38,7 @@ class CinemaController {
         // on se connecte et On exécute la requête de notre choix 
         $pdo = Connect::seConnecter();
         $requeteDetailFilm = $pdo->prepare("
-            SELECT titre, annee_sortie_film, TIME_FORMAT(SEC_TO_TIME((duree_minute * 60)), '%H:%i') AS duree_film, note, synopsis, affiche, id_film, id_realisateur
+            SELECT titre, annee_sortie_film, TIME_FORMAT(SEC_TO_TIME((duree_minute * 60)), '%H:%i') AS duree_film,  note, synopsis, affiche, id_film, id_realisateur, nb_like
             FROM film 
             WHERE id_film = :id
             ");
@@ -74,10 +74,28 @@ class CinemaController {
         WHERE f.id_film = :id");
         $requeteReal->execute(["id"=>$id]);
 
-       
+
         //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
         require "view/detailFilm.php";
     }
+
+    public function addLike($id){
+        if(isset($_POST["submit"])){
+                
+            $pdo = Connect::seConnecter();
+            // compteur like
+
+            $requeteLike = $pdo->prepare("
+            UPDATE film SET nb_like = nb_like + 1 WHERE id_film = :id");
+            $requeteLike->execute(["id"=>$id]);
+            
+
+            header("Location: index.php?action=detailFilm");
+            
+        }
+    }
+
+
 
     public function addFilm(){
 

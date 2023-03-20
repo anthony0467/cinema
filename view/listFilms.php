@@ -48,9 +48,9 @@
     <?php } ?>
 
         </fieldset>
-    <input type="number" name="dureeFilm" id="dureeFilm" min="60" placeholder="Durée du film en minutes">
+    <input type="number" name="dureeFilm" id="dureeFilm" min="60" max= "240"  placeholder="Durée du film en minutes">
     <input type="url" pattern="https://.*" name="afficheFilm" id="afficheFilm" placeholder="image(url)">
-    <input type="number" name="anneeFilm" id="anneeFilm" min="1900" max="2100" placeholder="Année de sortie">
+    <input type="number" name="anneeFilm" id="anneeFilm" min="1900" max="2050" placeholder="Année de sortie">
     <input type="number" name="noteFilm" id="noteFilm" min="1" max="5" placeholder="Note du film(entre 1 et 5)">
     <textarea id="synopsis" name="synopsis" rows="4" cols="30" placeholder="Synopsis"></textarea>
     <input type="submit" name="submit" class="btn" value="Ajouter">
