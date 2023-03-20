@@ -50,13 +50,13 @@ table {
 }
 
 
-
 /***********GENERAL***********/
 
 
 input, textarea, select{
     padding-left: .5rem;
     margin: .5rem 0;
+    max-width: 250px;
 }
 
 
@@ -104,7 +104,10 @@ input, textarea, select{
     color: white;
   }
 
-
+  .container-main *{
+    font-size: 20px;
+    }
+    
 
   /***********nav-large**************/
 
@@ -133,6 +136,9 @@ nav li a:hover{
 
 
 /*************form-film**************/
+thead th{
+    font-size: 30px!important;
+}
 
 fieldset{
     display: grid;
@@ -219,13 +225,7 @@ fieldset{
     font-size: 16px;
 }
 
-.container-formFilm form h3{
-    font-size: 20px;
-}
 
-.container-main *{
-font-size: 20px;
-}
 
 .container-main h3{
     font-size: 45px;
@@ -316,6 +316,10 @@ font-size: 20px;
     font-size: 16px;
 }
 
+.h4{
+    font-size: 22px!important;
+}
+
 #nav-large{
     display: none;
 }
@@ -324,6 +328,23 @@ font-size: 20px;
     border:1px solid #9b1414;
 }
 
+.card-actor{
+width: 100%;
+text-align: left;
+margin: 1rem 0;
+}
+
+.card-actor th, td{
+    padding: 0 .5rem;
+    }
+
+.card-real{
+    margin: 1rem 0;
+}
+
+.card-real tbody{
+    text-align: left;
+}
 /********* list actor/real *********/
 
 
@@ -353,6 +374,10 @@ font-size: 20px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
+    }
+
+    input{
+        max-width: 500px;
     }
   }
 

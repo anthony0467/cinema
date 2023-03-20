@@ -9,6 +9,7 @@ use Controller\ActeurController;
 use Controller\HomeController;
 use Controller\GenreController;
 use Controller\RoleController;
+use Controller\CastingController;
 
 //On autocharge les classes du projet 
 spl_autoload_register(function($class_name){
@@ -21,6 +22,7 @@ $ctrReal = new RealController();
 $ctrActeur = new ActeurController();
 $ctrGenre = new GenreController();
 $ctrRole = new RoleController();
+$ctrCasting = new CastingController();
 
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null ;
@@ -34,9 +36,11 @@ if(isset($_GET["action"])){
 
         case "listActeurs" : $ctrActeur->listActeurs(); break;
         case "detailActeur" : $ctrActeur->detailActeur($id); break;
+        case "addActeur" : $ctrActeur->addActeur(); break;
 
         case "listReals" : $ctrReal->listReals(); break;
         case "detailReal" : $ctrReal->detailReal($id); break;
+        case "addReal" : $ctrReal->addReal(); break;
 
         case "listGenres" : $ctrGenre->listGenres(); break;
         case "detailGenre" : $ctrGenre->detailGenre($id); break;
@@ -45,6 +49,9 @@ if(isset($_GET["action"])){
         case "listRoles" : $ctrRole->listRoles(); break;
         case "detailRole" : $ctrRole->detailRole($id); break;
         case "addRole" : $ctrRole->addRole(); break;
+
+        case "casting" : $ctrCasting->casting(); break;
+        case "addCasting" : $ctrCasting->addCasting(); break;
     }
 }
 

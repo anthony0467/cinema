@@ -1,8 +1,7 @@
-<?php ob_start(); ?>
 
 
 <form action="index.php?action=addCasting" class="form-style" method="POST">
-    <h4 class="txt-center">Créer mon casting</h4>
+    <h4 class="txt-center h4">Attribuer film et role</h4>
     <select name="acteur" id="acteur">
         <option value="" disabled selected>Choisir un acteur</option>
     <?php
@@ -31,11 +30,3 @@
 </form>
 
 
-<?php
-
-$titre = "Casting";
-$titre_secondaire = "Casting";
-$contenu = ob_get_clean();
-require "view/template.php";
-
-?>

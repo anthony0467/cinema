@@ -3,6 +3,7 @@
 <p class="uk-label uk-label-warning txt-center">Total : <?= $requete->rowCount() ?> réalisateurs</p>
 
 <form action="index.php?action=addReal" class="form-style" method="POST">
+<h4 class="txt-center h4">Ajouter un réalisateur</h4>
     <input type="text" name="nom" id="nom" placeholder="Ajouter un nom">
     <input type="text" name="prenom" id="prenom" placeholder="Ajouter un prénom">
     <fieldset>

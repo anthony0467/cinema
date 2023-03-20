@@ -3,12 +3,12 @@ $realDetail = $requeteDetail->fetch();
 $dateReal = $realDetail['date_naissance'];
  ?>
             
-            <article>
+            <article class="txt-center">
                 <h3><?=  $realDetail['prenom'], ' ', $realDetail['nom']  ?></h3>
                 <img src="<?= $realDetail['photo'] ?>" height="auto" width="300px" >
                 <p>Sexe: <?= $realDetail['sexe']  ?></p>
                  <p>Date de naissance : <?= date('d-m-Y', strtotime($dateReal)) ?></p>
-                 <table class="uk-table uk-table-striped">
+                 <table class="uk-table uk-table-striped card-real">
                     <thead>
                         <tr>
                             <th>Filmographie :</th>

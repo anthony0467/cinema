@@ -2,7 +2,7 @@
 $filmDetail = $requeteDetailFilm->fetch();
 $filmReal = $requeteReal->fetch();
  ?>
-            <h3><?=  $filmDetail['titre'] ?></h3>
+            <h3 class="txt-center"><?=  $filmDetail['titre'] ?></h3>
             <article class="flex row flex-center gap wrap">
                 <figure>
                     <img src="<?= $filmDetail['affiche'] ?>" height="auto" width="300px" alt="affiche cinéma" title="<?=  $filmDetail['titre'] ?>">

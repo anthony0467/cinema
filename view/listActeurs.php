@@ -3,6 +3,7 @@
 <p class="uk-label uk-label-warning txt-center">Total : <?= $requete->rowCount() ?> acteurs</p>
 
 <form action="index.php?action=addActeur" class="form-style" method="POST">
+<h4 class="txt-center h4">Ajouter un acteur</h4>
     <input type="text" name="nom" id="nom" placeholder="Ajouter un nom">
     <input type="text" name="prenom" id="prenom" placeholder="Ajouter un prénom">
     <fieldset>
@@ -18,6 +19,9 @@
     <input type="url" name="photo" id="photo" placeholder="image(url)">
     <input type="submit" name="submit" class="btn" value="Ajouter">
 </form>
+
+<?php include('casting.php') ?>
+
 
 <table class="uk-table uk-table-striped">
     <thead>

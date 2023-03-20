@@ -26,7 +26,7 @@
 
 
 <form action="index.php?action=addFilm" method="POST" class="flex  column gap form-style">
-    <h3 class="txt-center">Ajouter un film</h3>
+    <h4 class="txt-center h4">Ajouter un film</h4>
     <input type="text" name="nomFilm" id="nomFilm" placeholder="Ajouter un titre">
     <select name="realFilm" id="realFilm">
         <option  value="" disabled selected>Réalisateur</option>

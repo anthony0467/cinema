@@ -3,13 +3,12 @@ $acteurDetail = $requeteDetail->fetch();
 $dateActeur = $acteurDetail['date_naissance'];
  ?>
             
-            <article>
+            <article class="txt-center">
                 <h3><?=  $acteurDetail['prenom'], ' ', $acteurDetail['nom']  ?></h3>
                 <img src="<?= $acteurDetail['photo'] ?>" height="auto" width="300px" >
                 <p>Sexe: <?= $acteurDetail['sexe']  ?></p>
                  <p>Date de naissance : <?= date('d-m-Y', strtotime($dateActeur)) ?></p>
-                 <h4>Filmographie</h4>
-                 <table class="uk-table uk-table-striped">
+                 <table class="uk-table uk-table-striped card-actor">
                     <thead>
                         <tr>
                             <th>Film</th>
