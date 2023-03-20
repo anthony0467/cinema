@@ -59,7 +59,9 @@ input, textarea, select{
     max-width: 250px;
 }
 
-
+figure{
+    padding: 2rem 0;
+}
 
 
 /****************nav**************/
@@ -274,6 +276,10 @@ fieldset{
     text-align: center;
 }
 
+.align-start{
+    align-items: flex-start;
+}
+
 .pad-025{
     padding: 0 .25rem;
 }
@@ -286,8 +292,8 @@ fieldset{
     padding: 2rem;
 }
 
-.width-400{
-    max-width: 400px;
+.width-600{
+    max-width: 600px;
 }
 
 .table-film{
