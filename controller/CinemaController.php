@@ -122,6 +122,7 @@ class CinemaController
             $anneeFilm = filter_input(INPUT_POST, "anneeFilm", FILTER_VALIDATE_INT);
             $noteFilm = filter_input(INPUT_POST, "noteFilm", FILTER_VALIDATE_INT);
 
+            // verifier les fitlres
             if ($nomFilm && $realFilm && $genreFilm && $dureeFilm && $afficheFilm && $synopsis && $anneeFilm && $noteFilm) {
 
 
