@@ -47,7 +47,7 @@ $filmReal = $requeteReal->fetch();
 </article>
 
 <div>
-    <h4>Casting :</h4>
+    <h4 class="marg-height-x1">Casting :</h4>
     <ul class="list-casting">
         <?php
         foreach ($requeteCast->fetchAll() as $castActeur) { ?>
