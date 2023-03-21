@@ -107,7 +107,7 @@ figure{
   }
 
   .container-main *{
-    font-size: 20px;
+    font-size: 14px;
     }
     
 
@@ -279,6 +279,9 @@ fieldset{
 .align-start{
     align-items: flex-start;
 }
+.align-center{
+    align-items: center;
+}
 
 .pad-025{
     padding: 0 .25rem;
@@ -290,6 +293,10 @@ fieldset{
 
 .pad-x2{
     padding: 2rem;
+}
+
+.marg-height-x1{
+    margin: 1rem 0;
 }
 
 .width-600{
@@ -310,6 +317,22 @@ fieldset{
 
 }
 
+
+.btn-like{
+    cursor: pointer;
+    background: transparent;
+    color: #b31f1f;
+    border: 1px solid #b31f1f;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: .35s;
+}
+
+.btn-like:hover{
+    background-color: #b31f1f;
+    color: #fff;
+}
+
 .form-style{
     margin: 0 2rem;
     padding: 1.5rem;
@@ -320,6 +343,10 @@ fieldset{
 
 .form-style *{
     font-size: 16px;
+}
+
+.color-primary{
+    color: #b31f1f;
 }
 
 .h4{
@@ -351,6 +378,21 @@ margin: 1rem 0;
 .card-real tbody{
     text-align: left;
 }
+
+/**********detailFilm**********/
+
+.bg-casting{
+    background-color: #9b1414;
+    padding: .5rem;
+    margin: 1rem 0;
+}
+
+.list-casting{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
 /********* list actor/real *********/
 
 
@@ -360,6 +402,18 @@ margin: 1rem 0;
     align-items: center;
     gap: 1rem;
     margin: 1rem 0;
+}
+
+
+/**********detailRole*********/
+
+.role-table th{
+    text-align: left;
+    padding: 0.5rem;
+}
+
+.name-role{
+    max-width: 150px;
 }
 
 .marg-05{
@@ -382,6 +436,14 @@ margin: 1rem 0;
         gap: 2rem;
     }
 
+    .list-casting{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .container-main * {
+        font-size: 20px;
+    }
+
     input{
         max-width: 500px;
     }
@@ -393,5 +455,10 @@ margin: 1rem 0;
     .body-actor-real{
         grid-template-columns: 1fr 1fr 1fr;
     }
+
+    .list-casting{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
 
   }
