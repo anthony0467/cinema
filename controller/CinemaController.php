@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Controller;
 //  accéder à la classe Connect située dans le namespace "Model" 
 use Model\Connect;
@@ -120,26 +121,35 @@ class CinemaController
             $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneeFilm = filter_input(INPUT_POST, "anneeFilm", FILTER_VALIDATE_INT);
             $noteFilm = filter_input(INPUT_POST, "noteFilm", FILTER_VALIDATE_INT);
-            $requeteaddFilm = $pdo->prepare("
+
+            if ($nomFilm && $realFilm && $genreFilm && $dureeFilm && $afficheFilm && $synopsis && $anneeFilm && $noteFilm) {
+
+
+
+                $requeteaddFilm = $pdo->prepare("
             INSERT INTO film (titre, id_realisateur, duree_minute, affiche, synopsis, annee_sortie_film, note) VALUES (:nomFilm, :realFilm,  :dureeFilm, :afficheFilm, :synopsis, :anneeFilm, :noteFilm);");
-            $requeteaddFilm->execute(["nomFilm" => $nomFilm, "realFilm" => $realFilm, "dureeFilm" => $dureeFilm, "afficheFilm" => $afficheFilm, "synopsis" => $synopsis, "anneeFilm" => $anneeFilm, "noteFilm" => $noteFilm]);
+                $requeteaddFilm->execute(["nomFilm" => $nomFilm, "realFilm" => $realFilm, "dureeFilm" => $dureeFilm, "afficheFilm" => $afficheFilm, "synopsis" => $synopsis, "anneeFilm" => $anneeFilm, "noteFilm" => $noteFilm]);
 
-            // méthode pour récupéré l'id de l'element inséré 
-            $last_id = $pdo->lastInsertId();
+                // méthode pour récupéré l'id de l'element inséré 
+                $last_id = $pdo->lastInsertId();
 
 
-            foreach ($genreFilm as $genre) {
-                $requeteAddGenre = $pdo->prepare("
+                foreach ($genreFilm as $genre) {
+                    $requeteAddGenre = $pdo->prepare("
                 INSERT INTO categoriser (id_film, id_genre) 
                 VALUES (:id, :genreId)");
-                $requeteAddGenre->execute(["id" => $last_id, "genreId" => $genre]);
+                    $requeteAddGenre->execute(["id" => $last_id, "genreId" => $genre]);
+                }
+
+
+
+
+
+                header("Location: index.php?action=listFilms");
+            } else {
+
+                header("Location: index.php?action=listFilms");
             }
-
-
-
-
-
-            header("Location: index.php?action=listFilms");
         }
     }
 }

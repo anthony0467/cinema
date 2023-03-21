@@ -1,9 +1,12 @@
 <?php ob_start(); ?>
 
 <p class="uk-label uk-label-warning txt-center">Total : <?= $requete->rowCount() ?> acteurs</p>
-
-<form action="index.php?action=addActeur" class="form-style" method="POST">
-<h4 class="txt-center h4">Ajouter un acteur</h4>
+<div class="txt-center">
+    <button class="btn-add btn-like marg-height-x1">Ajouter un acteur </button>
+    <button class="btn-add-cast btn-like">Attribuer un film ou un role </button>
+</div>
+<form id="actor-form" action="index.php?action=addActeur" class="form-style none" method="POST">
+    <h4 class="txt-center h4">Ajouter un acteur</h4>
     <input type="text" name="nom" id="nom" placeholder="Ajouter un nom">
     <input type="text" name="prenom" id="prenom" placeholder="Ajouter un prénom">
     <fieldset>
@@ -31,11 +34,14 @@
     </thead>
     <tbody class="body-actor-real">
         <?php
-        foreach($requete->fetchAll() as $acteur){ ?>
+        foreach ($requete->fetchAll() as $acteur) { ?>
             <tr>
-                <td class="actor-real-list"><img src="<?= $acteur['photo'] ?>" alt="<?= $acteur['photo'] ?>" height="auto" width="50px"><a href="index.php?action=detailActeur&id=<?= $acteur["id_acteur"] ?>"><?= $acteur["acteur"] ?></a></td>
+                <td class="actor-real-list">
+                    <a class="flex row align-center gap-05" href="index.php?action=detailActeur&id=<?= $acteur["id_acteur"] ?>">
+                        <img src="<?= $acteur['photo'] ?>" alt="<?= $acteur['photo'] ?>" height="auto" width="50px"><?= $acteur["acteur"] ?></a>
+                </td>
             </tr>
-       <?php } ?>
+        <?php } ?>
     </tbody>
 </table>
 

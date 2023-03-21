@@ -43,15 +43,17 @@ class RoleController {
             // on se connecte et On exécute la requête de notre choix 
             $pdo = Connect::seConnecter();
             $nomRole = filter_input(INPUT_POST, "nomRole", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $requeteaddRole = $pdo->prepare("
+            if($nomRole){
+
+           $requeteaddRole = $pdo->prepare("
                 INSERT INTO role (nom_role) VALUES (:nomRole);");
             $requeteaddRole->execute(["nomRole" => $nomRole]);
             //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
         
             header("Location: index.php?action=listRoles");
+        }else{
+            header("Location: index.php?action=listRoles");
+        }
       }
     }
 }
-
-
-?>

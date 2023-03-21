@@ -54,6 +54,9 @@ class RealController {
             $sexe = filter_input(INPUT_POST, 'sexe',FILTER_SANITIZE_SPECIAL_CHARS);
             $date_naissance = filter_input(INPUT_POST, "date", FILTER_SANITIZE_SPECIAL_CHARS);
             $photo = filter_input(INPUT_POST, "photo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if( $nomPersonne && $prenomPersonne && $sexe && $date_naissance && $photo){
+
             $requeteaddPersonne = $pdo->prepare("
             INSERT INTO personne (nom, prenom, sexe, date_naissance, photo) 
             VALUES (:nom, :prenom, :sexe, :date, :photo);");
@@ -70,8 +73,10 @@ class RealController {
 
         
             header("Location: index.php?action=listReals");
+        }
+        else{
+            header("Location: index.php?action=listReals");
+        }
       }
    }
 }
-
-?>

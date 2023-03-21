@@ -14,7 +14,7 @@ class GenreController {
         $requete = $pdo->prepare("
         SELECT nom_genre, id_genre
         FROM genre ");
-        $requete->execute([]);
+        $requete->execute();
         //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
         require "view/listGenres.php";
     }
@@ -50,15 +50,18 @@ class GenreController {
           // on se connecte et On exécute la requête de notre choix 
           $pdo = Connect::seConnecter();
           $nomGenre = filter_input(INPUT_POST, "nomGenre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          if($nomGenre){
+
+         
           $requeteaddGenre = $pdo->prepare("
           INSERT INTO genre (nom_genre) VALUES (:nomGenre);");
           $requeteaddGenre->execute(["nomGenre" => $nomGenre]);
           //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
       
           header("Location: index.php?action=listGenres");
+        }else{
+          header("Location: index.php?action=listGenres");
+        }
     }
   }
 }
-
-
-?>

@@ -52,6 +52,9 @@ table {
 
 /***********GENERAL***********/
 
+img{
+    border: 2px solid #9b1414;
+}
 
 input, textarea, select{
     padding-left: .5rem;
@@ -107,7 +110,7 @@ figure{
   }
 
   .container-main *{
-    font-size: 14px;
+    font-size: 16px;
     }
     
 
@@ -319,6 +322,11 @@ fieldset{
 }
 
 
+.btn:hover{
+    background-color: #151414;
+}
+
+
 .btn-like{
     cursor: pointer;
     background: transparent;
@@ -380,6 +388,22 @@ margin: 1rem 0;
     text-align: left;
 }
 
+/**********jsbutton**********/
+.none{
+  
+    height: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: .5s;
+}
+
+.block{
+   
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: .5s;
+}
+
+
 /**********detailFilm**********/
 
 .bg-casting{
@@ -404,6 +428,15 @@ margin: 1rem 0;
     gap: 1rem;
     margin: 1rem 0;
 }
+
+.actor-real-list img{
+filter: grayscale(1);
+transition: .5s;
+}
+
+.actor-real-list a:hover img{
+    filter: grayscale(0);
+    }
 
 
 /**********detailRole*********/

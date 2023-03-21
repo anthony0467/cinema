@@ -42,6 +42,8 @@ class CastingController{
             $acteur = filter_input(INPUT_POST, "acteur", FILTER_SANITIZE_SPECIAL_CHARS);
             $film = filter_input(INPUT_POST, 'film', FILTER_SANITIZE_SPECIAL_CHARS);
             $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_SPECIAL_CHARS);
+            if($acteur && $film && $role){
+
             $requeteaddCasting = $pdo->prepare("
             INSERT INTO casting (id_acteur, id_film, id_role) VALUES (:acteur, :film,  :role);");
             $requeteaddCasting->execute(["acteur" => $acteur, "film" => $film, "role" => $role]);
@@ -54,8 +56,9 @@ class CastingController{
             
         
             header("Location: index.php?action=listFilms");
+        }
+        else{
+            header("Location: index.php?action=listFilms"); 
+        }
       }
     }
-
-
-?>

@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 
 
 use Controller\CinemaController;
@@ -60,5 +60,3 @@ else {
    
     $ctrlHome->getHomepage();
 }
-
-?>
